@@ -1,0 +1,17 @@
+.. _chap-md:
+
+Performing Molecular Dynamics With a Machine Learning Potential
+###############################################################
+
+The mlmd also performs molecular dynamics (MD) simulations, the ensemble for MD is the NVT, the implementation uses a Nose thermostat.
+To do MD with the *mlmd_* script you need: 
+
+	1) A machine learning potential also known as mlp ( :ref:`chap-mlp` )
+	
+	2) A structure file ( :ref:`chap-stru_file` )
+	
+	3) An md file ( :ref:`chap-md_file` )
+
+To perform the MD, type in the terminal: ::
+
+	mlmd_ -mode 'perform_md' -potential_dir 'path_to_mlp' -structure_file 'path_to_structure_file' -md_file 'path_to_md_file'

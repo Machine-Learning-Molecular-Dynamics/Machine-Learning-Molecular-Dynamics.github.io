@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>md File &#8212; mlmd_documentation 14_12_2018 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '14_12_2018',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dimension of the Feature Space" href="60.dimension_feat_space.html" />
+    <link rel="prev" title="Structure File" href="52.stru_file.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="60.dimension_feat_space.html" title="Dimension of the Feature Space"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="52.stru_file.html" title="Structure File"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.input_files.html" accesskey="U">Input Files</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="md-file">
+<span id="chap-md-file"></span><h1>md File<a class="headerlink" href="#md-file" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-md-file">
+<h2>The md File<a class="headerlink" href="#the-md-file" title="Permalink to this headline">¶</a></h2>
+<p>The md_file defines the parameters for the molecular dynamics simulation
+carry out by the mlmd package, the md_file must have the same format as
+the <em>md_file</em> sample file <em>‘input.md’</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">experiment_name</span> <span class="n">C_O_md</span>
+<span class="n">Qmass</span>          <span class="mf">1.0</span>
+<span class="n">temp</span>           <span class="mf">250.0</span>
+<span class="n">dt</span>             <span class="mf">0.1</span>
+<span class="n">correct_spteps</span> <span class="mi">15</span>
+<span class="n">md_steps</span>       <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-flags-in-the-md-file">
+<h2>The Flags in the md_file<a class="headerlink" href="#the-flags-in-the-md-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>experiment_name</strong> The name for the output file in xyz format.</p>
+<p><strong>Qmass</strong> The mass of the Nose thermostat.</p>
+<p><strong>temp</strong> The temperature in Kelvin of the thermostat.</p>
+<p><strong>dt</strong> The time step for the integration of the equations of motion.</p>
+<p><strong>correct_spteps</strong> The number of correction steps in the prediction
+corrector algorithm used to integrate the equations of motion
+md_steps The number time steps to perform with the simulation</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">md File</a><ul>
+<li><a class="reference internal" href="#the-md-file">The md File</a></li>
+<li><a class="reference internal" href="#the-flags-in-the-md-file">The Flags in the md_file</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="52.stru_file.html"
+                        title="previous chapter">Structure File</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="60.dimension_feat_space.html"
+                        title="next chapter">Dimension of the Feature Space</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/53.md_file.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="60.dimension_feat_space.html" title="Dimension of the Feature Space"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="52.stru_file.html" title="Structure File"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.input_files.html" >Input Files</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

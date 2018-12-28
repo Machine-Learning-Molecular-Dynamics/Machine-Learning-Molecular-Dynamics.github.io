@@ -1,0 +1,18 @@
+.. _chap-input_files:
+
+Input Files
+###########
+
+The input files are text files with the information to start calculations 
+in *mldm* and *mlmd_*. There are three types of input files: 
+**training file** to input information for the training process, 
+**structure file** to input the initial structure for molecular dynamics, 
+**md_file** to input the parameters for the molecular dynamics.
+
+.. toctree::
+   :maxdepth: 2
+   
+   51.training_file
+   52.stru_file
+   53.md_file
+

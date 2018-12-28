@@ -1,0 +1,35 @@
+.. _chap-md_file:
+
+md File
+###########
+
+==================
+The md File
+==================
+
+The md_file defines the parameters for the molecular dynamics simulation 
+carry out by the mlmd package, the md_file must have the same format as 
+the *md_file* sample file *‘input.md’* ::
+
+	experiment_name C_O_md
+	Qmass          1.0
+	temp           250.0
+	dt             0.1
+	correct_spteps 15
+	md_steps       100
+	
+========================	
+The Flags in the md_file
+========================
+
+**experiment_name** The name for the output file in xyz format.
+
+**Qmass** The mass of the Nose thermostat.
+
+**temp** The temperature in Kelvin of the thermostat.
+
+**dt** The time step for the integration of the equations of motion.
+
+**correct_spteps** The number of correction steps in the prediction 
+corrector algorithm used to integrate the equations of motion
+md_steps The number time steps to perform with the simulation

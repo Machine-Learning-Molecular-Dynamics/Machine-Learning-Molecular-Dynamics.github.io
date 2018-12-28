@@ -1,0 +1,36 @@
+.. _chap-Installation:
+
+Installation
+############
+
+===============
+Installing mlmd
+===============
+
+Installing *mlmd* is easy, the first step is to download (clone) the 
+code from its site in github `https://github.com/zeledon14/mlmd <https://github.com/zeledon14/mlmd>`_
+To download the code use the command: ::
+
+	git clone https://github.com/zeledon14/mlmd.git
+	
+To install *mlmd* go inside the **mlmd** directory just downloaded. 
+Inside the **mlmd** directory there are other three directories (mlmd, 
+scripts, and testing_data), and two files (READ.md, and setup.py). 
+Inside the **mlmd** directory containing setup.py execute: ::
+
+	python setup.py install --record mlmd_uninstall.txt
+	
+That's it *mlmd* is installed. The *mlmd_uninstall.txt* stores the 
+installation record of *mlmd* in case future uninstallation.
+
+=================
+Uninstalling mlmd
+=================
+
+To uninstall *mlmd*, go to the directory where the *mlmd_uninstall.txt* 
+file is stored (usually the **mlmd** directory inside the directory where 
+the git repository were cloned) and execute the command: ::
+
+	cat mlmd_uninstall.txt | xargs rm -rf
+	
+After that you can remove the **mlmd** directory.

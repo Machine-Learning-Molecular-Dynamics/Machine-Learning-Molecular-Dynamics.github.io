@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dimension of the Feature Space &#8212; mlmd_documentation 14_12_2018 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '14_12_2018',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorials" href="70.tutorials.html" />
+    <link rel="prev" title="md File" href="53.md_file.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="70.tutorials.html" title="Tutorials"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="53.md_file.html" title="md File"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dimension-of-the-feature-space">
+<span id="chap-dimension-feat-space"></span><h1>Dimension of the Feature Space<a class="headerlink" href="#dimension-of-the-feature-space" title="Permalink to this headline">¶</a></h1>
+<p>The features implemented in the mlmd are the Filtered Behler and
+Parrinello (FBP). The FBP method produces a feature vector per structure
+for energy calculations. The dimension of the feature space is the result
+of encoding the information of the composition, and geometry of a structure.
+The image at the top of the page shows the process of building a feature
+vector for the structure displayed in part A) of the image.</p>
+<div class="section" id="the-feature-space-in-the-filterd-behler-parrinello-method">
+<h2>The Feature Space in the Filterd Behler &amp; Parrinello Method<a class="headerlink" href="#the-feature-space-in-the-filterd-behler-parrinello-method" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/feat_vect_size.png" src="../_images/feat_vect_size.png" />
+<p>A) The S structure with three atoms, of two different species A and B,  the
+distances between the atoms are either <span class="math">\({\textit{d}_0}\)</span> or <span class="math">\({\textit{d}_1}\)</span>, the angles are <span class="math">\({\Phi_0}\)</span> or <span class="math">\({\Phi_1}\)</span>.
+B) The parameters for the FBP calculations, <span class="math">\({\textit{R}_p}\)</span> is the center of the Gaussian
+part of the FBP two body, it selects (filters) which interatomic distances
+are accounted for a given feature, here it can have two values <span class="math">\({\textit{R}_0}\)</span> or <span class="math">\({\textit{R}_1}\)</span>,
+the <span class="math">\({\textit{q}^{two-body}}\)</span> bodyis the set of all the two body combinations of the species
+in the system. <span class="math">\({\theta_p}\)</span> is the center of the Gaussian part of the FBP three
+body, it selects (filters) which trios of particles are taken into account
+in a given feature,  the <span class="math">\({\textit{q}^{three-body}}\)</span> is the set of all the three body
+combinations of the species in the system. C) Scheme of the feature vector
+calculation, the circles represent the input needed to calculate an individual
+feature for the feature vector, in the case of the FBP tow body, the
+input is: the structure, the value of  <span class="math">\({\textit{R}_p}\)</span> and the q interaction, in the case
+of the first feature (from left to right) <span class="math">\({\textit{R}_p}\)</span> = <span class="math">\({\textit{R}_0}\)</span> <span class="math">\({\approx}\)</span> <span class="math">\({\textit{d}_0}\)</span> and the q
+interaction is AA,  with these parameters the output (represented in the
+hexagon) is the result of extracting (filtering) the geometrical parts of
+the structure that meet the parameters requirements, in the third example
+for FBP two body,  the input information is  <span class="math">\({\textit{R}_p}\)</span> = <span class="math">\({\textit{R}_0}\)</span> <span class="math">\({\approx}\)</span> <span class="math">\({\textit{d}_0}\)</span> and the q interaction
+is BB, in this case, there are no geometrical part of the structure that
+meets the parameters, thus the output is empty. The three body feature
+calculation follows a similar process but instead of filtering the structure
+by interatomic distance, and two body combination, the selection process
+relies on the angle and the three body combination.  Finally, the feature
+vector for the S structure is the concatenation of all the individual features.
+The dimension of the feature vector is the number of  <span class="math">\({\textit{R}_p}\)</span> values, times
+the number of <span class="math">\({\textit{q}^{two-body}}\)</span> interactions, plus the number of <span class="math">\({\theta_p}\)</span>, times
+the number of <span class="math">\({\textit{q}^{two-body}}\)</span> interactions. The checkboard and wavy pattern
+in the feature vector mark the features that are different from 0.</p>
+</div>
+<div class="section" id="the-fami-2b-and-fami-3b">
+<h2>The fami_2b and fami_3b<a class="headerlink" href="#the-fami-2b-and-fami-3b" title="Permalink to this headline">¶</a></h2>
+<p>The FBP implemented in the mlmd package has some built-in filters
+(values for <span class="math">\({\textit{R}_p}\)</span> and <span class="math">\({\theta_p}\)</span>), there are 2-body filters and 3-body filters,
+the individual filters belong to families of filters, every family of filters
+have a certain number of filters equally spaced from an initial position to their respective
+cutoff (radius or angle). The 2-body families of filters are:</p>
+<ol class="arabic">
+<li><p class="first">Family one has 15 filters (one every 0.3 A, from 1.0A to 5.2A)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family tow (fami_2b 2) has 12 filters  (one every 0.4 A, from 1.0A to 5.4A)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family three has 10 filters (one every 0.5 A, from 1.0A to 5.5A)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family four (fami_2b 4) has 8 filters (one every 0.6 A, from 1.0A to 5.2A)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The 3 body families of filters are:</p>
+<ol class="arabic">
+<li><p class="first">Family one has 14 filters (one every [<span class="math">\({\pi}\)</span> /15] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family tow (fami_3b 2) has 9 filters (one every [<span class="math">\({\pi}\)</span> /10] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family three (fami_3b 3) has 7 filters (one every [<span class="math">\({\pi}\)</span> /8] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family three (fami_3b 4) has 6 filters (one every [<span class="math">\({\pi}\)</span> /7] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Family three (fami_3b 5) has 5 filters (one every [<span class="math">\({\pi}\)</span> /6] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Then, for example, a feature space for a system with 2 species, using
+family 2  for 2-body interactions, and families 3 and 4 for 3-body
+interactions, will have 152 features in total. The 2-body contribution
+will have 48 features, and the 3-body contribution will be 104 features.
+The 48 2-body features come from 4 interactions, and 12 filters in
+family 2 in 2-body interactions, then 4*12 = 48. The 104 comes from 8
+3-body interactions, and families 3 and 4 have 7 and 6 filters respectively,
+then the number of 3-body filters is 13, then 8*13 = 104,
+finally 104 + 48 = 152 the total number of features.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dimension of the Feature Space</a><ul>
+<li><a class="reference internal" href="#the-feature-space-in-the-filterd-behler-parrinello-method">The Feature Space in the Filterd Behler &amp; Parrinello Method</a></li>
+<li><a class="reference internal" href="#the-fami-2b-and-fami-3b">The fami_2b and fami_3b</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="53.md_file.html"
+                        title="previous chapter">md File</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="70.tutorials.html"
+                        title="next chapter">Tutorials</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/60.dimension_feat_space.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="70.tutorials.html" title="Tutorials"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="53.md_file.html" title="md File"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

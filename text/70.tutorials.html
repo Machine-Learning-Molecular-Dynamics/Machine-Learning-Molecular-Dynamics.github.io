@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorials &#8212; mlmd_documentation 14_12_2018 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '14_12_2018',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Dimension of the Feature Space" href="60.dimension_feat_space.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="60.dimension_feat_space.html" title="Dimension of the Feature Space"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorials">
+<span id="chap-tutorials"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-training-a-machine-learning-potential-with-abinit-data">
+<h2>Creating (Training) A Machine Learning Potential With Abinit Data<a class="headerlink" href="#creating-training-a-machine-learning-potential-with-abinit-data" title="Permalink to this headline">¶</a></h2>
+<p>Go to the <strong>testing_data</strong> directory inside the <strong>mlmd</strong> directory
+containing the <em>setup.py</em> file. Inside <strong>testing_data</strong> there are three
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp),
+go inside the <strong>mlmd_data_test_abinit</strong> directory, inside this directory,
+there are three files (input.md, input.stru, training.in), and one
+directory (dft_data ). To train the machine learning potential, <em>mlmd_</em>
+needs (see :ref: <cite>chap-mlp</cite>) the <strong>input.stru</strong> file containing the
+information for the machine learning potential (see :ref: <cite>chap-training_file</cite>),
+and the <strong>dft_data</strong> directory containing the results of
+DFT calculations performed with abinit.</p>
+<p>To train a machine learning potential, execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;training.in&#39;</span>
+</pre></div>
+</div>
+<p>The calculation may take some time depending on the processing power of
+the system carrying out the calculation, at the end of the calculation a
+directory named <strong>potential_test</strong>, this directory contains the machine
+learning potential.</p>
+</div>
+<div class="section" id="creating-training-a-machine-learning-potential-with-fireball-data">
+<h2>Creating (Training) A Machine Learning Potential With Fireball Data<a class="headerlink" href="#creating-training-a-machine-learning-potential-with-fireball-data" title="Permalink to this headline">¶</a></h2>
+<p>Go to the <strong>testing_data</strong> directory inside the <strong>mlmd</strong> directory
+containing the <em>setup.py</em> file. Inside <strong>testing_data</strong> there are three
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp),
+go inside the <strong>mlmd_data_test_fireball</strong> directory, inside this directory,
+there are three files (input.md, input.stru, training.in), and one
+directory (dft_data ). To train the machine learning potential, <em>mlmd_</em>
+needs (see :ref: <cite>chap-mlp</cite>) the <strong>input.stru</strong> file containing the
+information for the machine learning potential (see :ref: <cite>chap-training_file</cite>),
+and the <strong>dft_data</strong> directory containing the results of
+DFT calculations performed with fireball.</p>
+<p>To train a machine learning potential, execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;training.in&#39;</span>
+</pre></div>
+</div>
+<p>The calculation may take some time depending on the processing power of
+the system carrying out the calculation, at the end of the calculation a
+directory named <strong>potential_test</strong>, this directory contains the machine
+learning potential.</p>
+</div>
+<div class="section" id="creating-training-a-machine-learning-potential-with-vasp-data">
+<h2>Creating (Training) A Machine Learning Potential With Vasp Data<a class="headerlink" href="#creating-training-a-machine-learning-potential-with-vasp-data" title="Permalink to this headline">¶</a></h2>
+<p>Go to the <strong>testing_data</strong> directory inside the <strong>mlmd</strong> directory
+containing the <em>setup.py</em> file. Inside <strong>testing_data</strong> there are three
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp),
+go inside the <strong>mlmd_data_test_vasp</strong> directory, inside this directory,
+there are three files (input.md, input.stru, training.in), and one
+directory (dft_data ). To train the machine learning potential, <em>mlmd_</em>
+needs (see :ref: <cite>chap-mlp</cite>) the <strong>input.stru</strong> file containing the
+information for the machine learning potential (see :ref: <cite>chap-training_file</cite>),
+and the <strong>dft_data</strong> directory containing the results of
+DFT calculations performed with vasp.</p>
+<p>To train a machine learning potential, execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;training.in&#39;</span>
+</pre></div>
+</div>
+<p>The calculation may take some time depending on the processing power of
+the system carrying out the calculation, at the end of the calculation a
+directory named <strong>potential_test</strong>, this directory contains the machine
+learning potential.</p>
+</div>
+<div class="section" id="performing-molecuar-dyanmics-with-a-machine-leaning-potential">
+<h2>Performing Molecuar Dyanmics With A Machine Leaning Potential<a class="headerlink" href="#performing-molecuar-dyanmics-with-a-machine-leaning-potential" title="Permalink to this headline">¶</a></h2>
+<p>Go to the <strong>testing_data</strong> directory inside the <strong>mlmd</strong> directory
+containing the <em>setup.py</em> file. Inside <strong>testing_data</strong> there are three
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp),
+select whichever of those three as long as you already made a machine
+learning potential in choosen one.</p>
+<p>To perform Molecular Dynamics with <em>mlmd_</em> you need two files
+<em>the structure file</em> (:ref: <cite>chap-stru_file</cite>) and <em>the md file</em>
+(:ref: <cite>chap-md_file</cite>),  in addition you need a machine learning
+potential (:ref: <cite>chap-mlp</cite>).</p>
+<p>To make <em>mlmd_</em> performs Molecular Dynamics execute the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;perform_md&#39;</span> <span class="o">-</span><span class="n">potential_dir</span> <span class="s1">&#39;potential_test&#39;</span> <span class="o">-</span><span class="n">structure_file</span> <span class="s1">&#39;input.stru&#39;</span> <span class="o">-</span><span class="n">md_file</span> <span class="s1">&#39;input.md&#39;</span>
+</pre></div>
+</div>
+<p>The result of the Molecular Dynamics a xyz file with the trayectory of
+the structure undergoing the Molecular Dynamics.</p>
+</div>
+<div class="section" id="calculate-the-filter-behler-parrinello-features-only">
+<h2>Calculate The Filter Behler Parrinello Features Only<a class="headerlink" href="#calculate-the-filter-behler-parrinello-features-only" title="Permalink to this headline">¶</a></h2>
+<p>To calculate the Filter Behler Parrinello (FBP) features only, you can
+use the Jupyter Notebooks stored in <strong>mlmd/testing_data/jupyter_notebooks</strong>,
+there are four notebooks (one per every  DFT code supported, and one extra
+where the inputs are only xyz files).</p>
+<p>In case you want to calculate the FBP features for a structure or many
+structures without processing them through a DFT code, you can do it by
+putting the structures in a .xyz file (the energy and temperature can be
+0.00, it does not matter for the feature calculation), once the structures
+are in a .xyz file format you can use the <em>feature_calulation_from_xyz.ipynb</em>
+notebook to see how to obtain the FBP features.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorials</a><ul>
+<li><a class="reference internal" href="#creating-training-a-machine-learning-potential-with-abinit-data">Creating (Training) A Machine Learning Potential With Abinit Data</a></li>
+<li><a class="reference internal" href="#creating-training-a-machine-learning-potential-with-fireball-data">Creating (Training) A Machine Learning Potential With Fireball Data</a></li>
+<li><a class="reference internal" href="#creating-training-a-machine-learning-potential-with-vasp-data">Creating (Training) A Machine Learning Potential With Vasp Data</a></li>
+<li><a class="reference internal" href="#performing-molecuar-dyanmics-with-a-machine-leaning-potential">Performing Molecuar Dyanmics With A Machine Leaning Potential</a></li>
+<li><a class="reference internal" href="#calculate-the-filter-behler-parrinello-features-only">Calculate The Filter Behler Parrinello Features Only</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="60.dimension_feat_space.html"
+                        title="previous chapter">Dimension of the Feature Space</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/70.tutorials.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="60.dimension_feat_space.html" title="Dimension of the Feature Space"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

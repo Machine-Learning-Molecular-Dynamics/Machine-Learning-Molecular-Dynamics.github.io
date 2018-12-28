@@ -1,0 +1,111 @@
+.. _chap-tutorials:
+
+Tutorials
+############
+
+=================================================================
+Creating (Training) A Machine Learning Potential With Abinit Data
+=================================================================
+Go to the **testing_data** directory inside the **mlmd** directory 
+containing the *setup.py* file. Inside **testing_data** there are three 
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp), 
+go inside the **mlmd_data_test_abinit** directory, inside this directory, 
+there are three files (input.md, input.stru, training.in), and one 
+directory (dft_data ). To train the machine learning potential, *mlmd_* 
+needs (see :ref: `chap-mlp`) the **input.stru** file containing the 
+information for the machine learning potential (see :ref: `chap-training_file`), 
+and the **dft_data** directory containing the results of 
+DFT calculations performed with abinit. 
+
+To train a machine learning potential, execute the command: ::
+
+	mlmd_ -mode 'create_potential' -training_file 'training.in'
+The calculation may take some time depending on the processing power of 
+the system carrying out the calculation, at the end of the calculation a 
+directory named **potential_test**, this directory contains the machine 
+learning potential. 
+
+===================================================================
+Creating (Training) A Machine Learning Potential With Fireball Data
+===================================================================
+Go to the **testing_data** directory inside the **mlmd** directory 
+containing the *setup.py* file. Inside **testing_data** there are three 
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp), 
+go inside the **mlmd_data_test_fireball** directory, inside this directory, 
+there are three files (input.md, input.stru, training.in), and one 
+directory (dft_data ). To train the machine learning potential, *mlmd_* 
+needs (see :ref: `chap-mlp`) the **input.stru** file containing the 
+information for the machine learning potential (see :ref: `chap-training_file`), 
+and the **dft_data** directory containing the results of 
+DFT calculations performed with fireball. 
+
+To train a machine learning potential, execute the command: ::
+
+	mlmd_ -mode 'create_potential' -training_file 'training.in'
+
+The calculation may take some time depending on the processing power of 
+the system carrying out the calculation, at the end of the calculation a 
+directory named **potential_test**, this directory contains the machine 
+learning potential. 
+
+===============================================================
+Creating (Training) A Machine Learning Potential With Vasp Data
+===============================================================
+
+Go to the **testing_data** directory inside the **mlmd** directory 
+containing the *setup.py* file. Inside **testing_data** there are three 
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp), 
+go inside the **mlmd_data_test_vasp** directory, inside this directory, 
+there are three files (input.md, input.stru, training.in), and one 
+directory (dft_data ). To train the machine learning potential, *mlmd_* 
+needs (see :ref: `chap-mlp`) the **input.stru** file containing the 
+information for the machine learning potential (see :ref: `chap-training_file`), 
+and the **dft_data** directory containing the results of 
+DFT calculations performed with vasp. 
+
+To train a machine learning potential, execute the command: ::
+
+	mlmd_ -mode 'create_potential' -training_file 'training.in'
+
+The calculation may take some time depending on the processing power of 
+the system carrying out the calculation, at the end of the calculation a 
+directory named **potential_test**, this directory contains the machine 
+learning potential. 
+
+=============================================================
+Performing Molecuar Dyanmics With A Machine Leaning Potential
+=============================================================
+
+Go to the **testing_data** directory inside the **mlmd** directory 
+containing the *setup.py* file. Inside **testing_data** there are three 
+directories (mlmd_data_test_abinit , mlmd_data_test_fireball, mlmd_data_test_vasp), 
+select whichever of those three as long as you already made a machine 
+learning potential in choosen one.
+
+To perform Molecular Dynamics with *mlmd_* you need two files 
+*the structure file* (:ref: `chap-stru_file`) and *the md file* 
+(:ref: `chap-md_file`),  in addition you need a machine learning 
+potential (:ref: `chap-mlp`).
+
+To make *mlmd_* performs Molecular Dynamics execute the command ::
+	
+	mlmd_ -mode 'perform_md' -potential_dir 'potential_test' -structure_file 'input.stru' -md_file 'input.md'
+
+The result of the Molecular Dynamics a xyz file with the trayectory of 
+the structure undergoing the Molecular Dynamics.
+
+====================================================
+Calculate The Filter Behler Parrinello Features Only
+====================================================
+
+To calculate the Filter Behler Parrinello (FBP) features only, you can 
+use the Jupyter Notebooks stored in **mlmd/testing_data/jupyter_notebooks**, 
+there are four notebooks (one per every  DFT code supported, and one extra 
+where the inputs are only xyz files).
+
+In case you want to calculate the FBP features for a structure or many 
+structures without processing them through a DFT code, you can do it by 
+putting the structures in a .xyz file (the energy and temperature can be 
+0.00, it does not matter for the feature calculation), once the structures 
+are in a .xyz file format you can use the *feature_calulation_from_xyz.ipynb* 
+notebook to see how to obtain the FBP features.

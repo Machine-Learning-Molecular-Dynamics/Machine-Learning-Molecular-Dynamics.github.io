@@ -1,0 +1,256 @@
+.. _chap-training_file:
+
+Training File
+###########
+
+==================
+The training file 
+==================
+The *training file* inputs the information for the training process, 
+the symbol to comment a line is **“#”**, the following is a sample training 
+file called **“training.in”** the training files must follow the format 
+shown in the sample:
+::
+
+	#training.in
+	#setting up the training parameters
+	# path where the data for training is stored
+	path_to_data dft_data 
+	#code used to generate the data
+	#1-> abinit 2-> fireball 3-> vasp
+	code 1
+	spec_simb C O
+	spec_Z 6 8
+	fami_2b 2
+	fami_3b 3 4
+	potential_name potential_test
+	validation_percentage 20
+
+	GBR_E_models_to_train  2
+	GBR_E_n_estimators 650 550
+	GBR_E_max_depth 7 5
+	GBR_E_min_samples_split 2 4
+	GBR_E_learning_rate 0.1732 0.35
+	GBR_E_min_samples_leaf 3 5
+
+	GBR_F_models_to_train  1
+	GBR_F_n_estimators 900
+	GBR_F_max_depth 8
+	GBR_F_min_samples_split 2
+	GBR_F_learning_rate 0.1732
+	GBR_F_min_samples_leaf 3
+
+	nn_E_models_to_train 2
+	nn_E_learning_rate 0.0012 0.0009
+	nn_E_training_steps 100 100
+	nn_E_batch_size 25 30
+	nn_E_architecture_1 152 80 20 1
+	nn_E_architecture_2 152 80 40 20 1
+
+	nn_F_models_to_train 2
+	nn_F_learning_rate 0.0018 0.00009
+	nn_F_training_steps 1000 1000
+	nn_F_batch_size 100 250
+	nn_F_architecture_1 152 80 20 1
+	nn_F_architecture_2 152 80 40 20 1
+
+===========================	
+Flags for the Training File
+===========================
+**path_to_data** The path to the directory where the DFT data is stored.
+
+**code**  The number indicating the DFT code used for the calculations ::
+
+	1-> abinit 
+	2-> fireball 
+	3-> vasp.
+
+**spec_simb** The species symbols of the atoms in the data set, in the  
+sample *“training.in”* the flag is ::
+	spec_simb C O
+	
+**spec_Z** The chemical number of the atoms in the data set, in the order 
+in which they appear en the  *spec_simb* flag, in the  
+sample *“training.in”* the flag is ::
+	spec_Z 6 8
+**fami_2b** The families of 2 body Rpcenters for the Gaussians, or filters, 
+in the sample *‘training.in’* ::
+	fami_2b 2  
+is using the second family as defined in :ref:`chap-dimension_feat_space` .
+
+**fami_3b** The families of 3 body pcenters for the Gaussians, or filters, 
+in the sample *‘training.in’* ::
+	fami_3b 3 4  
+is using the third and fourth families as defined in :ref:`chap-dimension_feat_space` .
+
+**potential_name** Name of the directory containing the potential. 
+The *potential_name* directory will be created in the path where the *mlmd_* is invoked.
+
+**validation_percentage** The percentage of elements from the data set 
+to be used in the validation set.
+
+**GBR_E_models_to_train** The number of gradients boosting regressors to
+be trained for energy predictions, the *mlmd_* will select the model 
+(GBR or nn) with the lower error in the validation set to be the part of
+the machine learning potential. In the sample ‘training.in’ ::
+	GBR_E_models_to_train  2
+which means that *mlmd_* is going to train 2 GBR models to predict energy. 
+In the case in which the user wants to train only neural networks the 
+*GBR_E_models_to_train* can be put to 0 for example ::
+	GBR_E_models_to_train  0
+	
+**GBR_E_n_estimators** Array of integers with the number of estimators 
+in every one of the GBR energy models defined in *GBR_E_models_to_train*.  
+In the sample ‘training.in’ ::
+	GBR_E_n_estimators 650 550 
+which means that the first GBR energy model is going to have 650 
+estimators and the second one 550.
+
+**GBR_E_max_depth** Array of integers with the maximal depth of every 
+one of the GBR energy models defined in GBR_E_models_to_train.  
+In the sample ‘training.in’ ::
+	GBR_E_max_depth 7 5 
+which means that the first GBR energy model is going to have a maximal 
+depth of 7, while the second model is going to be 5.
+
+**GBR_E_min_samples_split** Array of integers with the minimum number of 
+samples required to split an internal node in every one of the GBR energy 
+models defined in GBR_E_models_to_train.  In the sample ‘training.in’ ::
+	GBR_E_min_samples_split 2 4 
+which means that in the first GBR energy model the minimal number of 
+samples is going to be 2, while in the second model is going to be 4.
+
+**GBR_E_learning_rate** Array of floats with the learning rates of the 
+GBR energy models defined in GBR_E_models_to_train. 
+In the sample ‘training.in’ ::
+	GBR_E_learning_rate 0.1732 0.35 
+which means that in the first GBR energy model the learning rate is 
+going to be 0.1732, while in the second model is going to be 0.35.
+
+**GBR_E_min_samples_leaf** Array of integers with the minimum number of 
+samples required to be at a terminal node in every one of the GBR energy
+ models defined in GBR_E_models_to_train.  In the sample ‘training.in’ ::
+	GBR_E_min_samples_split 2 4 
+which means that in the first GBR energy model the minimal number of 
+samples is going to be 2, while in the second model is going to be 4.
+
+**GBR_F_models_to_train**  The number of gradients boosting regressors 
+to be trained for force predictions, the *mlmd_* will select the model 
+(GBR or nn) with the lower error in the validation set to be the part of 
+the machine learning potential. In the sample ‘training.in’ ::
+	GBR_F_models_to_train  1  
+which means that mlmd is going to train 1 GBR model to predict force.
+
+**GBR_F_n_estimators** Array of integers with the number of estimators 
+in every one of the GBR force models defined in *GBR_F_models_to_train*.  
+In the sample ‘training.in’ ::
+	GBR_F_n_estimators 900 
+which means that the GBR force model is going to have 900.
+
+**GBR_F_max_depth** Array of integers with the maximal depth of every 
+one of the GBR force models defined in *GBR_F_models_to_train*.  
+In the sample ‘training.in’ ::
+	GBR_F_max_depth 8 
+which means that the GBR force model is going to have a maximal depth of 8.
+
+**GBR_F_min_samples_split** Array of integers with the minimum number of
+samples required to split an internal node in every one of the GBR 
+force models defined in *GBR_F_models_to_train*.  In the sample ‘training.in’ :: 
+	GBR_F_min_samples_split 2 
+which means that in theGBR force model the minimal number of samples is going to be 2.
+
+**GBR_F_learning_rate** Array of floats with the learning rates of the 
+GBR force models defined in GBR_F_models_to_train. In the sample ‘training.in’ ::
+	GBR_F_learning_rate 0.1732  
+which means that in the GBR force model the learning rate is going to be 0.1732
+
+**GBR_F_min_samples_leaf** Array of integers with the minimum number of 
+samples required to be at a terminal node in every one of the GBR force 
+models defined in *GBR_F_models_to_train*.  In the sample ‘training.in’ ::
+	GBR_F_min_samples_leaf 3
+which means that in the GBR force model the minimal number of samples is going to be 3
+
+**nn_E_models_to_train** The number of neural network to be trained for 
+energy predictions, the *mlmd_* will select the model (GBR or nn) with 
+the lower error in the validation set to be the part of the machine 
+learning potential. In the sample ‘training.in’ ::
+	nn_E_models_to_train 2 
+which means that mlmd is going to train 2 nn models to predict enrgy.
+
+**nn_E_learning_rate** Array of floats with the learning rates of the 
+nn energy models defined in *nn_E_models_to_train*. In the sample ‘training.in’ ::
+	nn_E_learning_rate 0.0012 0.0009  
+which means that in the first nn energy model the learning rate is going
+to be 0.0012, while in the second model is going to be 0.0009.
+
+**nn_E_training_steps** Array of integers with the number of training 
+steps for every one of the models declared in *nn_E_models_to_train*.  
+In the sample ‘training.in’ ::
+	nn_E_training_steps 100 100
+which means that the in both nn models the number of training steps is going to be 100.
+
+**nn_E_batch_size**  Array of integers with the number of size of the 
+batches for the training in every one of the models declared in *nn_E_models_to_train*. 
+In the sample ‘training.in’ ::
+	nn_E_batch_size 25 30  
+which means that in the first nn model de batch for training is going to
+have 25 examples, while for the second nn model the batch size is going to be of 30 examples.
+
+**nn_E_architecture_i** Array of integers, the amount of numbers in the 
+array determines the number of layers in the ‘i’ nn declared in *nn_E_models_to_train*, 
+every number in the array represents the number of nodes in the represented layer. 
+For example in the *‘training.in’* sample there are 2 nn model declared, 
+then there are also 2 architectures, the first one ::
+	nn_E_architecture_1 152 80 20 1 
+this represents an nn with 4 leyers, the first leyer has 152 nodes (the 
+number of nodes of the first layer must be equal to the number of dimensions 
+of the feature vectors), the second layer has 80 nodes, the third layer 
+has 20 nodes, and the output layer has 1node, (the output layer must 
+always have 1 node). 
+For the second architecture in the ‘training.in’ ::
+	sample nn_E_architecture_2 152 80 40 20 1
+the number of leyers is 5  the first has 152 nodes, the second layer has
+80 nodes, the third layer has 40 nodes, the fourth layer has 20 nodes, 
+and the fifth layer (output) has 1 node.
+
+**nn_F_models_to_train** The number of neural network to be trained for 
+energy predictions, the *mlmd_* will select the model (GBR or nn) with 
+the lower error in the validation set to be the part of the machine 
+learning potential. In the sample ‘training.in’ ::
+	nn_F_models_to_train 2 
+which means that mlmd is going to train 2 nn models to predict force
+
+**nn_F_learning_rate** Array of floats with the learning rates of the nn 
+force models defined in *nn_F_models_to_train*.  In the sample ‘training.in’ ::
+	nn_F_learning_rate 0.0018 0.00009  
+which means that in the first nn force model the learning rate is going 
+to be 0.0018, while in the second model is going to be 0.0009.
+
+**nn_F_training_steps** Array of integers with the number of training 
+steps for every one of the models declared in nn_F_models_to_train. 
+In the sample ‘training.in’ ::
+	nn_F_training_steps 1000 1000 
+which means that the in both nn models the number of training steps is going to be 1000.
+
+**nn_F_batch_size**  Array of integers with the number of size of the 
+batches for the training in every one of the models declared in *nn_F_models_to_train*.
+In the sample ‘training.in’ ::
+	nn_F_batch_size 100 250
+which means that in the first nn model de batch for training is going to 
+have 100 examples, while for the second nn model the batch size is going to be of 250 examples.
+
+**nn_F_architecture_i** Array of integers, the amount of numbers in the 
+array determines the number of layers in the ‘i’ nn declared in *nn_F_models_to_train*, 
+every number in the array represents the number of nodes in the 
+represented leyer. For example in the ‘training.in’ sample there are 2 nn model declared, 
+then there are also 2 architectures, the first one ::
+	nn_F_architecture_1 152 80 20 1 
+this represents an nn with 4 layers, the first layer has 152 nodes (the 
+number of nodes of the first layer must be equal to the number of 
+dimensions of the feature vectors), the second layer has 80 nodes, the 
+third layer has 20 nodes, and the output layer has 1 node, (the output 
+layer must always have 1 node). In the second example in the ‘training.in’ sample ::
+	nn_F_architecture_2 152 80 40 20 1
+the number of layers is 5  the first has 152 nodes, the second layer has 
+80 nodes, the third layer has 40 nodes, the fourth layer has 20 nodes, 
+and the fifth layer (output) has 1 node.

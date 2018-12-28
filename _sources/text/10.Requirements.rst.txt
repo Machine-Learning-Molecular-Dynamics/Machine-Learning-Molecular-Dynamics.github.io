@@ -1,0 +1,15 @@
+.. _chap-requirements:
+
+mlmd Requirements
+#################
+For its correct functioning mlmd needs the following codes:
+
+1. `Python 2.7 <https://www.python.org/download/releases/2.7/>`_
+
+2. `Numpy <http://www.numpy.org/>`_ 1.1 1 or newer
+
+3. `sklearn <https://scikit-learn.org/stable/>`_
+
+4. `Tensorflow <https://www.tensorflow.org/>`_
+
+* `Pychemia <https://github.com/MaterialsDiscovery/PyChemia>`_ In case you need to read data from VASP

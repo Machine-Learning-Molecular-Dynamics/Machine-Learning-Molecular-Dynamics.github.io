@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Training File &#8212; mlmd_documentation 14_12_2018 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '14_12_2018',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Structure File" href="52.stru_file.html" />
+    <link rel="prev" title="Input Files" href="50.input_files.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="52.stru_file.html" title="Structure File"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="50.input_files.html" title="Input Files"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.input_files.html" accesskey="U">Input Files</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="training-file">
+<span id="chap-training-file"></span><h1>Training File<a class="headerlink" href="#training-file" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-training-file">
+<h2>The training file<a class="headerlink" href="#the-training-file" title="Permalink to this headline">¶</a></h2>
+<p>The <em>training file</em> inputs the information for the training process,
+the symbol to comment a line is <strong>“#”</strong>, the following is a sample training
+file called <strong>“training.in”</strong> the training files must follow the format
+shown in the sample:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#training.in</span>
+<span class="c1">#setting up the training parameters</span>
+<span class="c1"># path where the data for training is stored</span>
+<span class="n">path_to_data</span> <span class="n">dft_data</span>
+<span class="c1">#code used to generate the data</span>
+<span class="c1">#1-&gt; abinit 2-&gt; fireball 3-&gt; vasp</span>
+<span class="n">code</span> <span class="mi">1</span>
+<span class="n">spec_simb</span> <span class="n">C</span> <span class="n">O</span>
+<span class="n">spec_Z</span> <span class="mi">6</span> <span class="mi">8</span>
+<span class="n">fami_2b</span> <span class="mi">2</span>
+<span class="n">fami_3b</span> <span class="mi">3</span> <span class="mi">4</span>
+<span class="n">potential_name</span> <span class="n">potential_test</span>
+<span class="n">validation_percentage</span> <span class="mi">20</span>
+
+<span class="n">GBR_E_models_to_train</span>  <span class="mi">2</span>
+<span class="n">GBR_E_n_estimators</span> <span class="mi">650</span> <span class="mi">550</span>
+<span class="n">GBR_E_max_depth</span> <span class="mi">7</span> <span class="mi">5</span>
+<span class="n">GBR_E_min_samples_split</span> <span class="mi">2</span> <span class="mi">4</span>
+<span class="n">GBR_E_learning_rate</span> <span class="mf">0.1732</span> <span class="mf">0.35</span>
+<span class="n">GBR_E_min_samples_leaf</span> <span class="mi">3</span> <span class="mi">5</span>
+
+<span class="n">GBR_F_models_to_train</span>  <span class="mi">1</span>
+<span class="n">GBR_F_n_estimators</span> <span class="mi">900</span>
+<span class="n">GBR_F_max_depth</span> <span class="mi">8</span>
+<span class="n">GBR_F_min_samples_split</span> <span class="mi">2</span>
+<span class="n">GBR_F_learning_rate</span> <span class="mf">0.1732</span>
+<span class="n">GBR_F_min_samples_leaf</span> <span class="mi">3</span>
+
+<span class="n">nn_E_models_to_train</span> <span class="mi">2</span>
+<span class="n">nn_E_learning_rate</span> <span class="mf">0.0012</span> <span class="mf">0.0009</span>
+<span class="n">nn_E_training_steps</span> <span class="mi">100</span> <span class="mi">100</span>
+<span class="n">nn_E_batch_size</span> <span class="mi">25</span> <span class="mi">30</span>
+<span class="n">nn_E_architecture_1</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">20</span> <span class="mi">1</span>
+<span class="n">nn_E_architecture_2</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">40</span> <span class="mi">20</span> <span class="mi">1</span>
+
+<span class="n">nn_F_models_to_train</span> <span class="mi">2</span>
+<span class="n">nn_F_learning_rate</span> <span class="mf">0.0018</span> <span class="mf">0.00009</span>
+<span class="n">nn_F_training_steps</span> <span class="mi">1000</span> <span class="mi">1000</span>
+<span class="n">nn_F_batch_size</span> <span class="mi">100</span> <span class="mi">250</span>
+<span class="n">nn_F_architecture_1</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">20</span> <span class="mi">1</span>
+<span class="n">nn_F_architecture_2</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">40</span> <span class="mi">20</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="flags-for-the-training-file">
+<h2>Flags for the Training File<a class="headerlink" href="#flags-for-the-training-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>path_to_data</strong> The path to the directory where the DFT data is stored.</p>
+<p><strong>code</strong>  The number indicating the DFT code used for the calculations</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">-&gt;</span> <span class="n">abinit</span>
+<span class="mi">2</span><span class="o">-&gt;</span> <span class="n">fireball</span>
+<span class="mi">3</span><span class="o">-&gt;</span> <span class="n">vasp</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>spec_simb</strong> The species symbols of the atoms in the data set, in the
+sample <em>“training.in”</em> the flag is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">spec_simb</span> <span class="n">C</span> <span class="n">O</span>
+</pre></div>
+</div>
+<p><strong>spec_Z</strong> The chemical number of the atoms in the data set, in the order
+in which they appear en the  <em>spec_simb</em> flag, in the
+sample <em>“training.in”</em> the flag is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">spec_Z</span> <span class="mi">6</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p><strong>fami_2b</strong> The families of 2 body Rpcenters for the Gaussians, or filters,
+in the sample <em>‘training.in’</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>is using the second family as defined in <a class="reference internal" href="60.dimension_feat_space.html#chap-dimension-feat-space"><span class="std std-ref">Dimension of the Feature Space</span></a> .</p>
+<p><strong>fami_3b</strong> The families of 3 body pcenters for the Gaussians, or filters,
+in the sample <em>‘training.in’</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">3</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>is using the third and fourth families as defined in <a class="reference internal" href="60.dimension_feat_space.html#chap-dimension-feat-space"><span class="std std-ref">Dimension of the Feature Space</span></a> .</p>
+<p><strong>potential_name</strong> Name of the directory containing the potential.
+The <em>potential_name</em> directory will be created in the path where the <em>mlmd_</em> is invoked.</p>
+<p><strong>validation_percentage</strong> The percentage of elements from the data set
+to be used in the validation set.</p>
+<p><strong>GBR_E_models_to_train</strong> The number of gradients boosting regressors to
+be trained for energy predictions, the <em>mlmd_</em> will select the model
+(GBR or nn) with the lower error in the validation set to be the part of
+the machine learning potential. In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_E_models_to_train</span>  <span class="mi">2</span>
+</pre></div>
+</div>
+<p>which means that <em>mlmd_</em> is going to train 2 GBR models to predict energy.
+In the case in which the user wants to train only neural networks the
+<em>GBR_E_models_to_train</em> can be put to 0 for example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_E_models_to_train</span>  <span class="mi">0</span>
+</pre></div>
+</div>
+<p><strong>GBR_E_n_estimators</strong> Array of integers with the number of estimators
+in every one of the GBR energy models defined in <em>GBR_E_models_to_train</em>.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_E_n_estimators</span> <span class="mi">650</span> <span class="mi">550</span>
+</pre></div>
+</div>
+<p>which means that the first GBR energy model is going to have 650
+estimators and the second one 550.</p>
+<p><strong>GBR_E_max_depth</strong> Array of integers with the maximal depth of every
+one of the GBR energy models defined in GBR_E_models_to_train.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_E_max_depth</span> <span class="mi">7</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>which means that the first GBR energy model is going to have a maximal
+depth of 7, while the second model is going to be 5.</p>
+<p><strong>GBR_E_min_samples_split</strong> Array of integers with the minimum number of
+samples required to split an internal node in every one of the GBR energy
+models defined in GBR_E_models_to_train.  In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_E_min_samples_split</span> <span class="mi">2</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>which means that in the first GBR energy model the minimal number of
+samples is going to be 2, while in the second model is going to be 4.</p>
+<p><strong>GBR_E_learning_rate</strong> Array of floats with the learning rates of the
+GBR energy models defined in GBR_E_models_to_train.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_E_learning_rate</span> <span class="mf">0.1732</span> <span class="mf">0.35</span>
+</pre></div>
+</div>
+<p>which means that in the first GBR energy model the learning rate is
+going to be 0.1732, while in the second model is going to be 0.35.</p>
+<p><strong>GBR_E_min_samples_leaf</strong> Array of integers with the minimum number of
+samples required to be at a terminal node in every one of the GBR energy</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>models defined in GBR_E_models_to_train.  In the sample ‘training.in’ ::</dt>
+<dd>GBR_E_min_samples_split 2 4</dd>
+</dl>
+</div></blockquote>
+<p>which means that in the first GBR energy model the minimal number of
+samples is going to be 2, while in the second model is going to be 4.</p>
+<p><strong>GBR_F_models_to_train</strong>  The number of gradients boosting regressors
+to be trained for force predictions, the <em>mlmd_</em> will select the model
+(GBR or nn) with the lower error in the validation set to be the part of
+the machine learning potential. In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_F_models_to_train</span>  <span class="mi">1</span>
+</pre></div>
+</div>
+<p>which means that mlmd is going to train 1 GBR model to predict force.</p>
+<p><strong>GBR_F_n_estimators</strong> Array of integers with the number of estimators
+in every one of the GBR force models defined in <em>GBR_F_models_to_train</em>.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_F_n_estimators</span> <span class="mi">900</span>
+</pre></div>
+</div>
+<p>which means that the GBR force model is going to have 900.</p>
+<p><strong>GBR_F_max_depth</strong> Array of integers with the maximal depth of every
+one of the GBR force models defined in <em>GBR_F_models_to_train</em>.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_F_max_depth</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>which means that the GBR force model is going to have a maximal depth of 8.</p>
+<p><strong>GBR_F_min_samples_split</strong> Array of integers with the minimum number of
+samples required to split an internal node in every one of the GBR
+force models defined in <em>GBR_F_models_to_train</em>.  In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_F_min_samples_split</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>which means that in theGBR force model the minimal number of samples is going to be 2.</p>
+<p><strong>GBR_F_learning_rate</strong> Array of floats with the learning rates of the
+GBR force models defined in GBR_F_models_to_train. In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_F_learning_rate</span> <span class="mf">0.1732</span>
+</pre></div>
+</div>
+<p>which means that in the GBR force model the learning rate is going to be 0.1732</p>
+<p><strong>GBR_F_min_samples_leaf</strong> Array of integers with the minimum number of
+samples required to be at a terminal node in every one of the GBR force
+models defined in <em>GBR_F_models_to_train</em>.  In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBR_F_min_samples_leaf</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>which means that in the GBR force model the minimal number of samples is going to be 3</p>
+<p><strong>nn_E_models_to_train</strong> The number of neural network to be trained for
+energy predictions, the <em>mlmd_</em> will select the model (GBR or nn) with
+the lower error in the validation set to be the part of the machine
+learning potential. In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_E_models_to_train</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>which means that mlmd is going to train 2 nn models to predict enrgy.</p>
+<p><strong>nn_E_learning_rate</strong> Array of floats with the learning rates of the
+nn energy models defined in <em>nn_E_models_to_train</em>. In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_E_learning_rate</span> <span class="mf">0.0012</span> <span class="mf">0.0009</span>
+</pre></div>
+</div>
+<p>which means that in the first nn energy model the learning rate is going
+to be 0.0012, while in the second model is going to be 0.0009.</p>
+<p><strong>nn_E_training_steps</strong> Array of integers with the number of training
+steps for every one of the models declared in <em>nn_E_models_to_train</em>.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_E_training_steps</span> <span class="mi">100</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>which means that the in both nn models the number of training steps is going to be 100.</p>
+<p><strong>nn_E_batch_size</strong>  Array of integers with the number of size of the
+batches for the training in every one of the models declared in <em>nn_E_models_to_train</em>.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_E_batch_size</span> <span class="mi">25</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<p>which means that in the first nn model de batch for training is going to
+have 25 examples, while for the second nn model the batch size is going to be of 30 examples.</p>
+<p><strong>nn_E_architecture_i</strong> Array of integers, the amount of numbers in the
+array determines the number of layers in the ‘i’ nn declared in <em>nn_E_models_to_train</em>,
+every number in the array represents the number of nodes in the represented layer.
+For example in the <em>‘training.in’</em> sample there are 2 nn model declared,
+then there are also 2 architectures, the first one</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_E_architecture_1</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">20</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>this represents an nn with 4 leyers, the first leyer has 152 nodes (the
+number of nodes of the first layer must be equal to the number of dimensions
+of the feature vectors), the second layer has 80 nodes, the third layer
+has 20 nodes, and the output layer has 1node, (the output layer must
+always have 1 node).
+For the second architecture in the ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="n">nn_E_architecture_2</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">40</span> <span class="mi">20</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>the number of leyers is 5  the first has 152 nodes, the second layer has
+80 nodes, the third layer has 40 nodes, the fourth layer has 20 nodes,
+and the fifth layer (output) has 1 node.</p>
+<p><strong>nn_F_models_to_train</strong> The number of neural network to be trained for
+energy predictions, the <em>mlmd_</em> will select the model (GBR or nn) with
+the lower error in the validation set to be the part of the machine
+learning potential. In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_F_models_to_train</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>which means that mlmd is going to train 2 nn models to predict force</p>
+<p><strong>nn_F_learning_rate</strong> Array of floats with the learning rates of the nn
+force models defined in <em>nn_F_models_to_train</em>.  In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_F_learning_rate</span> <span class="mf">0.0018</span> <span class="mf">0.00009</span>
+</pre></div>
+</div>
+<p>which means that in the first nn force model the learning rate is going
+to be 0.0018, while in the second model is going to be 0.0009.</p>
+<p><strong>nn_F_training_steps</strong> Array of integers with the number of training
+steps for every one of the models declared in nn_F_models_to_train.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_F_training_steps</span> <span class="mi">1000</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>which means that the in both nn models the number of training steps is going to be 1000.</p>
+<p><strong>nn_F_batch_size</strong>  Array of integers with the number of size of the
+batches for the training in every one of the models declared in <em>nn_F_models_to_train</em>.
+In the sample ‘training.in’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_F_batch_size</span> <span class="mi">100</span> <span class="mi">250</span>
+</pre></div>
+</div>
+<p>which means that in the first nn model de batch for training is going to
+have 100 examples, while for the second nn model the batch size is going to be of 250 examples.</p>
+<p><strong>nn_F_architecture_i</strong> Array of integers, the amount of numbers in the
+array determines the number of layers in the ‘i’ nn declared in <em>nn_F_models_to_train</em>,
+every number in the array represents the number of nodes in the
+represented leyer. For example in the ‘training.in’ sample there are 2 nn model declared,
+then there are also 2 architectures, the first one</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_F_architecture_1</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">20</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>this represents an nn with 4 layers, the first layer has 152 nodes (the
+number of nodes of the first layer must be equal to the number of
+dimensions of the feature vectors), the second layer has 80 nodes, the
+third layer has 20 nodes, and the output layer has 1 node, (the output
+layer must always have 1 node). In the second example in the ‘training.in’ sample</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nn_F_architecture_2</span> <span class="mi">152</span> <span class="mi">80</span> <span class="mi">40</span> <span class="mi">20</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>the number of layers is 5  the first has 152 nodes, the second layer has
+80 nodes, the third layer has 40 nodes, the fourth layer has 20 nodes,
+and the fifth layer (output) has 1 node.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Training File</a><ul>
+<li><a class="reference internal" href="#the-training-file">The training file</a></li>
+<li><a class="reference internal" href="#flags-for-the-training-file">Flags for the Training File</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="50.input_files.html"
+                        title="previous chapter">Input Files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="52.stru_file.html"
+                        title="next chapter">Structure File</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/51.training_file.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="52.stru_file.html" title="Structure File"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="50.input_files.html" title="Input Files"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mlmd_documentation 14_12_2018 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.input_files.html" >Input Files</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

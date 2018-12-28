@@ -1,0 +1,27 @@
+.. _chap-mlp:
+
+Creating (Training) a Machine Learning Potential
+################################################
+
+The mlmd package contains the *mlmd_* script, this script works as an int
+erface to simplify the usage of the mlmd package. To create a machine 
+learning potential (mlp) you will need:
+        1)  A directory containing the dataset with the output of DFT   
+            calculations of either Abinit, Fireball or Vasp. 
+            
+				* In the case of using Abinit, you will need the *.out* files. 
+				
+				* In the case of using Fireball you will need the *.xyz* and *.log* files. 
+				
+				* In the case of using Vasp, you will need the *OUTCAR* and *POSCAR* files (For more details see the examples in the tutorial).
+            
+        2)  A training file ( :ref:`chap-training_file`)
+       
+To create (train) the potential using the *mlmd_* script just type on the terminal: ::
+
+   mlmd_ -mode 'create_potential' -training_file 'path_to_the_training_file’
+
+For example, if the training file with name ‘training.in’ is in the same 
+directory in which *mlmd_* is invoked then the creating command is : ::
+
+   mlmd_ -mode 'create_potential' -training_file 'training.in'
