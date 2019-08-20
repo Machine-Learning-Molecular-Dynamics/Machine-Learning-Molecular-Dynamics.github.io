@@ -1,0 +1,40 @@
+.. mlmd_documentation documentation master file, created by
+   sphinx-quickstart on Wed Dec 26 13:39:00 2018.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Machine Learning Molecular Dynamics (mlmd)
+==========================================
+
+The machine learning molecular dynamics (mlmd) package (`link to the source code <https://github.com/zeledon14/mlmd>`_) is a command line
+open source python program. It calculates the feature representation of 
+a structure (molecule, cluster, crystal), using the 
+Structural Information Filter Features (SIFF), in addition,  mlmd is also able to 
+perform molecular dynamics simulations with machine learning potentials 
+(also known as machine learning force fields or machine learning empirical potentials). 
+
+The mlmd program generates machine learning potentials (mlp) processing 
+the energies and forces of DFT calculations carried out over systems of 
+particles, then uses the trained potential to do NVT molecular dynamics 
+on a structure compatible with the mlp. So far mlmd can use calculations 
+from `VASP <https://www.vasp.at/index.php/about-vasp/59-about-vasp>`_,  
+`Abinit <https://www.abinit.org/>`_, and `Fireball  <https://sites.google.com/site/jameslewisgroup/>`_ as inputs.
+
+.. toctree::
+   :maxdepth: 2
+   
+   text/10.Requirements
+   text/20.Installation
+   text/30.mlp
+   text/40.md
+   text/50.input_files
+   text/60.dimension_feat_space
+   text/70.tutorials
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
