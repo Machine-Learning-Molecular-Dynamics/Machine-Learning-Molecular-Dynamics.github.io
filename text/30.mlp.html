@@ -1,36 +1,25 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Creating (Training) a Machine Learning Potential &#8212; mlmd_documentation 14_12_2018 documentation</title>
-    
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '14_12_2018',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Performing Molecular Dynamics With a Machine Learning Potential" href="40.md.html" />
     <link rel="prev" title="Installation" href="20.Installation.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -74,12 +63,12 @@ calculations of either Abinit, Fireball or Vasp.</p>
 </ol>
 </div></blockquote>
 <p>To create (train) the potential using the <em>mlmd_</em> script just type on the terminal:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;path_to_the_training_file’</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;path_to_the_training_file’</span>
 </pre></div>
 </div>
 <p>For example, if the training file with name ‘training.in’ is in the same
 directory in which <em>mlmd_</em> is invoked then the creating command is :</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;training.in&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mlmd_</span> <span class="o">-</span><span class="n">mode</span> <span class="s1">&#39;create_potential&#39;</span> <span class="o">-</span><span class="n">training_file</span> <span class="s1">&#39;training.in&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -105,12 +94,14 @@ directory in which <em>mlmd_</em> is invoked then the creating command is :</p>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -134,7 +125,7 @@ directory in which <em>mlmd_</em> is invoked then the creating command is :</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Arturo Hernandez.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

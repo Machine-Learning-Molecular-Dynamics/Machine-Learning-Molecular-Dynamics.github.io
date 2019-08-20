@@ -1,36 +1,25 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Dimension of the Feature Space &#8212; mlmd_documentation 14_12_2018 documentation</title>
-    
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '14_12_2018',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorials" href="70.tutorials.html" />
     <link rel="prev" title="md File" href="53.md_file.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -54,97 +43,96 @@
             
   <div class="section" id="dimension-of-the-feature-space">
 <span id="chap-dimension-feat-space"></span><h1>Dimension of the Feature Space<a class="headerlink" href="#dimension-of-the-feature-space" title="Permalink to this headline">¶</a></h1>
-<p>The features implemented in the mlmd are the Filtered Behler and
-Parrinello (FBP). The FBP method produces a feature vector per structure
+<p>The features implemented in the mlmd are the Structural Information Fiter Features (SIFF). The SIFF method produces a feature vector per structure
 for energy calculations. The dimension of the feature space is the result
 of encoding the information of the composition, and geometry of a structure.
 The image at the top of the page shows the process of building a feature
 vector for the structure displayed in part A) of the image.</p>
-<div class="section" id="the-feature-space-in-the-filterd-behler-parrinello-method">
-<h2>The Feature Space in the Filterd Behler &amp; Parrinello Method<a class="headerlink" href="#the-feature-space-in-the-filterd-behler-parrinello-method" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-feature-space-in-the-structural-information-fiter-features">
+<h2>The Feature Space in the Structural Information Fiter Features<a class="headerlink" href="#the-feature-space-in-the-structural-information-fiter-features" title="Permalink to this headline">¶</a></h2>
 <img alt="../_images/feat_vect_size.png" src="../_images/feat_vect_size.png" />
 <p>A) The S structure with three atoms, of two different species A and B,  the
-distances between the atoms are either <span class="math">\({\textit{d}_0}\)</span> or <span class="math">\({\textit{d}_1}\)</span>, the angles are <span class="math">\({\Phi_0}\)</span> or <span class="math">\({\Phi_1}\)</span>.
-B) The parameters for the FBP calculations, <span class="math">\({\textit{R}_p}\)</span> is the center of the Gaussian
-part of the FBP two body, it selects (filters) which interatomic distances
-are accounted for a given feature, here it can have two values <span class="math">\({\textit{R}_0}\)</span> or <span class="math">\({\textit{R}_1}\)</span>,
-the <span class="math">\({\textit{q}^{two-body}}\)</span> bodyis the set of all the two body combinations of the species
-in the system. <span class="math">\({\theta_p}\)</span> is the center of the Gaussian part of the FBP three
+distances between the atoms are either <span class="math notranslate nohighlight">\({\textit{d}_0}\)</span> or <span class="math notranslate nohighlight">\({\textit{d}_1}\)</span>, the angles are <span class="math notranslate nohighlight">\({\Phi_0}\)</span> or <span class="math notranslate nohighlight">\({\Phi_1}\)</span>.
+B) The parameters for the SIFF calculations, <span class="math notranslate nohighlight">\({\textit{R}_p}\)</span> is the center of the Gaussian
+part of the SIFF two body, it selects (filters) which interatomic distances
+are accounted for a given feature, here it can have two values <span class="math notranslate nohighlight">\({\textit{R}_0}\)</span> or <span class="math notranslate nohighlight">\({\textit{R}_1}\)</span>,
+the <span class="math notranslate nohighlight">\({\textit{q}^{two-body}}\)</span> bodyis the set of all the two body combinations of the species
+in the system. <span class="math notranslate nohighlight">\({\theta_p}\)</span> is the center of the Gaussian part of the SIFF three
 body, it selects (filters) which trios of particles are taken into account
-in a given feature,  the <span class="math">\({\textit{q}^{three-body}}\)</span> is the set of all the three body
+in a given feature,  the <span class="math notranslate nohighlight">\({\textit{q}^{three-body}}\)</span> is the set of all the three body
 combinations of the species in the system. C) Scheme of the feature vector
 calculation, the circles represent the input needed to calculate an individual
-feature for the feature vector, in the case of the FBP tow body, the
-input is: the structure, the value of  <span class="math">\({\textit{R}_p}\)</span> and the q interaction, in the case
-of the first feature (from left to right) <span class="math">\({\textit{R}_p}\)</span> = <span class="math">\({\textit{R}_0}\)</span> <span class="math">\({\approx}\)</span> <span class="math">\({\textit{d}_0}\)</span> and the q
+feature for the feature vector, in the case of the SIFF tow body, the
+input is: the structure, the value of  <span class="math notranslate nohighlight">\({\textit{R}_p}\)</span> and the q interaction, in the case
+of the first feature (from left to right) <span class="math notranslate nohighlight">\({\textit{R}_p}\)</span> = <span class="math notranslate nohighlight">\({\textit{R}_0}\)</span> <span class="math notranslate nohighlight">\({\approx}\)</span> <span class="math notranslate nohighlight">\({\textit{d}_0}\)</span> and the q
 interaction is AA,  with these parameters the output (represented in the
 hexagon) is the result of extracting (filtering) the geometrical parts of
 the structure that meet the parameters requirements, in the third example
-for FBP two body,  the input information is  <span class="math">\({\textit{R}_p}\)</span> = <span class="math">\({\textit{R}_0}\)</span> <span class="math">\({\approx}\)</span> <span class="math">\({\textit{d}_0}\)</span> and the q interaction
+for SIFF two body,  the input information is  <span class="math notranslate nohighlight">\({\textit{R}_p}\)</span> = <span class="math notranslate nohighlight">\({\textit{R}_0}\)</span> <span class="math notranslate nohighlight">\({\approx}\)</span> <span class="math notranslate nohighlight">\({\textit{d}_0}\)</span> and the q interaction
 is BB, in this case, there are no geometrical part of the structure that
 meets the parameters, thus the output is empty. The three body feature
 calculation follows a similar process but instead of filtering the structure
 by interatomic distance, and two body combination, the selection process
 relies on the angle and the three body combination.  Finally, the feature
 vector for the S structure is the concatenation of all the individual features.
-The dimension of the feature vector is the number of  <span class="math">\({\textit{R}_p}\)</span> values, times
-the number of <span class="math">\({\textit{q}^{two-body}}\)</span> interactions, plus the number of <span class="math">\({\theta_p}\)</span>, times
-the number of <span class="math">\({\textit{q}^{two-body}}\)</span> interactions. The checkboard and wavy pattern
+The dimension of the feature vector is the number of  <span class="math notranslate nohighlight">\({\textit{R}_p}\)</span> values, times
+the number of <span class="math notranslate nohighlight">\({\textit{q}^{two-body}}\)</span> interactions, plus the number of <span class="math notranslate nohighlight">\({\theta_p}\)</span>, times
+the number of <span class="math notranslate nohighlight">\({\textit{q}^{two-body}}\)</span> interactions. The checkboard and wavy pattern
 in the feature vector mark the features that are different from 0.</p>
 </div>
 <div class="section" id="the-fami-2b-and-fami-3b">
 <h2>The fami_2b and fami_3b<a class="headerlink" href="#the-fami-2b-and-fami-3b" title="Permalink to this headline">¶</a></h2>
-<p>The FBP implemented in the mlmd package has some built-in filters
-(values for <span class="math">\({\textit{R}_p}\)</span> and <span class="math">\({\theta_p}\)</span>), there are 2-body filters and 3-body filters,
+<p>The SIFF implemented in the mlmd package has some built-in filters
+(values for <span class="math notranslate nohighlight">\({\textit{R}_p}\)</span> and <span class="math notranslate nohighlight">\({\theta_p}\)</span>), there are 2-body filters and 3-body filters,
 the individual filters belong to families of filters, every family of filters
 have a certain number of filters equally spaced from an initial position to their respective
 cutoff (radius or angle). The 2-body families of filters are:</p>
 <ol class="arabic">
 <li><p class="first">Family one has 15 filters (one every 0.3 A, from 1.0A to 5.2A)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Family tow (fami_2b 2) has 12 filters  (one every 0.4 A, from 1.0A to 5.4A)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Family three has 10 filters (one every 0.5 A, from 1.0A to 5.5A)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Family four (fami_2b 4) has 8 filters (one every 0.6 A, from 1.0A to 5.2A)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_2b</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>The 3 body families of filters are:</p>
 <ol class="arabic">
-<li><p class="first">Family one has 14 filters (one every [<span class="math">\({\pi}\)</span> /15] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">1</span>
+<li><p class="first">Family one has 14 filters (one every [<span class="math notranslate nohighlight">\({\pi}\)</span> /15] rads , from 0 to <span class="math notranslate nohighlight">\({\pi}\)</span>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Family tow (fami_3b 2) has 9 filters (one every [<span class="math">\({\pi}\)</span> /10] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">2</span>
+<li><p class="first">Family tow (fami_3b 2) has 9 filters (one every [<span class="math notranslate nohighlight">\({\pi}\)</span> /10] rads , from 0 to <span class="math notranslate nohighlight">\({\pi}\)</span>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Family three (fami_3b 3) has 7 filters (one every [<span class="math">\({\pi}\)</span> /8] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">3</span>
+<li><p class="first">Family three (fami_3b 3) has 7 filters (one every [<span class="math notranslate nohighlight">\({\pi}\)</span> /8] rads , from 0 to <span class="math notranslate nohighlight">\({\pi}\)</span>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Family three (fami_3b 4) has 6 filters (one every [<span class="math">\({\pi}\)</span> /7] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">4</span>
+<li><p class="first">Family three (fami_3b 4) has 6 filters (one every [<span class="math notranslate nohighlight">\({\pi}\)</span> /7] rads , from 0 to <span class="math notranslate nohighlight">\({\pi}\)</span>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Family three (fami_3b 5) has 5 filters (one every [<span class="math">\({\pi}\)</span> /6] rads , from 0 to <span class="math">\({\pi}\)</span>)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">5</span>
+<li><p class="first">Family three (fami_3b 5) has 5 filters (one every [<span class="math notranslate nohighlight">\({\pi}\)</span> /6] rads , from 0 to <span class="math notranslate nohighlight">\({\pi}\)</span>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fami_3b</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </li>
@@ -167,10 +155,10 @@ finally 104 + 48 = 152 the total number of features.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Dimension of the Feature Space</a><ul>
-<li><a class="reference internal" href="#the-feature-space-in-the-filterd-behler-parrinello-method">The Feature Space in the Filterd Behler &amp; Parrinello Method</a></li>
+<li><a class="reference internal" href="#the-feature-space-in-the-structural-information-fiter-features">The Feature Space in the Structural Information Fiter Features</a></li>
 <li><a class="reference internal" href="#the-fami-2b-and-fami-3b">The fami_2b and fami_3b</a></li>
 </ul>
 </li>
@@ -191,12 +179,14 @@ finally 104 + 48 = 152 the total number of features.</p>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -220,7 +210,7 @@ finally 104 + 48 = 152 the total number of features.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Arturo Hernandez.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>
